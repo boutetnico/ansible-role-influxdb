@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  role_name: influxdb
+  author: Nicolas Boutet
+  description: Install and configure InfluxDB.
+  license: MIT
+  min_ansible_version: 2.7
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+    - name: Debian
+      versions:
+        - buster
+        - stretch
+  galaxy_tags:
+    - influx
+    - influxdata
+    - influxdb
+dependencies: []

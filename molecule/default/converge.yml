@@ -1,0 +1,26 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-influxdb
+
+      influxdb_orgs:
+        - name: main-org
+          description: Main organization
+        - name: guest-org
+
+      influxdb_users:
+        - name: admin01
+          org: main-org
+          password: secretPassword
+        - name: guest01
+          org: guest-org
+          password: secretPassword
+
+      influxdb_buckets:
+        - name: bucket01
+          description: First bucket
+          org: main-org
+          retention: 1d
+        - name: bucket02
+          org: main-org

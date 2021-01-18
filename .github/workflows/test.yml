@@ -1,0 +1,42 @@
+---
+name: Test ansible role
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "22 2 * * 2"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ansible: ["2.9", "2.10"]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Remove pre-installed ansible
+        run: sudo apt-get remove --purge -y ansible
+
+      - name: Install dependencies
+        run: pip install ansible~=${{ matrix.ansible }}.0 ansible-lint docker flake8 molecule molecule-docker pytest-testinfra
+
+      - name: Display versions
+        run: |
+          python -c "import sys; print(sys.version)"
+          pip --version
+          ansible --version
+          molecule --version
+
+      - name: Run Molecule
+        run: molecule test

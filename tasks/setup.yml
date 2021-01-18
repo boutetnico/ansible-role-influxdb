@@ -1,0 +1,52 @@
+---
+- name: Install dependencies
+  apt:
+    name: "{{ influxdb_dependencies }}"
+    state: present
+    update_cache: true
+
+- name: Add InfluxData's key
+  apt_key:
+    state: present
+    url: "{{ influxdb_signing_key }}"
+
+- name: Install InfluxDB
+  apt:
+    deb: "https://dl.influxdata.com/influxdb/releases/influxdb2_{{ influxdb_version }}_amd64.deb"
+    state: present
+
+- name: Setup InfluxDB default file
+  template:
+    dest: /etc/default/influxdb2
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/default/influxdb2.j2
+  notify: Restart InfluxDB
+
+- name: Ensure InfluxDB directories exists
+  file:
+    group: influxdb
+    mode: 0750
+    owner: influxdb
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ influxdb_config_path | dirname }}"
+    - "{{ influxdb_bolt_path | dirname }}"
+    - "{{ influxdb_engine_path }}"
+
+- name: Setup InfluxDB configuration file
+  template:
+    dest: "{{ influxdb_config_path }}"
+    group: influxdb
+    mode: 0644
+    owner: influxdb
+    src: etc/influxdb/config.yml.j2
+  notify: Restart InfluxDB
+
+- name: Ensure InfluxDB is started and starts at boot
+  service:
+    enabled: true
+    name: "{{ influxdb_service_name }}"
+    state: started

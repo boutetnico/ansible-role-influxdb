@@ -1,0 +1,63 @@
+---
+- name: Ensure InfluxDB is up and running
+  command: influx ping
+  retries: 10
+  delay: 5
+  register: _ping
+  until: _ping.rc == 0
+  changed_when: false
+
+- name: Set InfluxDB default user, organization, and bucket
+  command: influx setup \
+    --org {{ influxdb_default_org }} \
+    --bucket {{ influxdb_default_bucket }} \
+    --username {{ influxdb_default_username }} \
+    --password {{ influxdb_default_password }} \
+    --force
+  register: _setup
+  failed_when:
+    - _setup.rc != 0
+    - '"has already been setup" not in _setup.stdout'
+  changed_when: _setup.rc == 0
+
+- name: Ensure organizations exist
+  command: influx org create \
+    --name "{{ item.name }}" \
+    --description "{{ item.description | d('') }}"
+  loop: "{{ influxdb_orgs }}"
+  loop_control:
+    label: "{{ item.name }}"
+  register: _org
+  failed_when:
+    - _org.rc != 0
+    - '"already exists" not in _org.stdout'
+  changed_when: _org.rc == 0
+
+- name: Ensure users exist
+  command: influx user create \
+    --name "{{ item.name }}" \
+    --org "{{ item.org }}" \
+    --password "{{ item.password }}"
+  loop: "{{ influxdb_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+  register: _user
+  failed_when:
+    - _user.rc != 0
+    - '"already exists" not in _user.stdout'
+  changed_when: _user.rc == 0
+
+- name: Ensure buckets exist
+  command: influx bucket create \
+    --name "{{ item.name }}" \
+    --description "{{ item.description | d('') }}" \
+    --org "{{ item.org }}" \
+    --retention "{{ item.retention | d(0) }}"
+  loop: "{{ influxdb_buckets }}"
+  loop_control:
+    label: "{{ item.name }}"
+  register: _bucket
+  failed_when:
+    - _bucket.rc != 0
+    - '"already exists" not in _bucket.stdout'
+  changed_when: _bucket.rc == 0

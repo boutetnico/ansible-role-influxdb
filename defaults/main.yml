@@ -1,0 +1,40 @@
+---
+influxdb_dependencies:
+  - gnupg
+
+influxdb_version: 2.0.3
+
+influxdb_config_path: /etc/influxdb/config.yml
+influxdb_bolt_path: /var/lib/influxdb/influxd.bolt
+influxdb_engine_path: /var/lib/influxdb/engine
+
+influxdb_config: {}
+#  http-bind-address: 0.0.0.0:8086
+#  reporting-disabled: true
+
+influxdb_default_org: example-org
+influxdb_default_bucket: example-bucket
+influxdb_default_username: example-user
+influxdb_default_password: ExAmPl3PA55W0rD
+
+influxdb_orgs: []
+#  - name: main-org
+#    description: Main organization
+#  - name: guest-org
+
+influxdb_users: []
+#  - name: admin01
+#    org: main-org
+#    password: secretPassword
+#  - name: guest01
+#    org: guest-org
+#    password: secretPassword
+
+influxdb_buckets: []
+#  - name: bucket01
+#    description: First bucket
+#    org: main-org
+#    retention: 1d
+#  - name: bucket02
+#    description: Second bucket
+#    org: main-org

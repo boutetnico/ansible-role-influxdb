@@ -1,0 +1,4 @@
+---
+influxdb_signing_key: https://repos.influxdata.com/influxdb2.key
+
+influxdb_service_name: influxd
