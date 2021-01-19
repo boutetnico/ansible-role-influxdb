@@ -47,6 +47,6 @@
 
 - name: Ensure InfluxDB is started and starts at boot
   service:
-    enabled: true
+    enabled: "{{ influxdb_service_enabled }}"
     name: "{{ influxdb_service_name }}"
-    state: started
+    state: "{{ influxdb_service_state }}"

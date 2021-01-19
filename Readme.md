@@ -23,21 +23,23 @@ Supported Platforms
 Role Variables
 --------------
 
-| Variable                  | Required | Default                          | Choices   | Comments                    |
-|---------------------------|----------|----------------------------------|-----------|-----------------------------|
-| influxdb_dependencies     | yes      | `[gnupg]`                        | list      |                             |
-| influxdb_version          | yes      | `2.0.3`                          | string    |                             |
-| influxdb_config_path      | yes      | `/etc/influxdb/config.yml`       | string    |                             |
-| influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt` | string    |                             |
-| influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`       | string    |                             |
-| influxdb_config           | yes      | `{}`                             | dict      |                             |
-| influxdb_default_org      | yes      | `example-org`                    | string    |                             |
-| influxdb_default_bucket   | yes      | `example-bucket`                 | string    |                             |
-| influxdb_default_username | yes      | `example-user`                   | string    |                             |
-| influxdb_default_password | yes      | `ExAmPl3PA55W0rD`                | string    |                             |
-| influxdb_orgs             | yes      | `[]`                             | list      |                             |
-| influxdb_users            | yes      | `[]`                             | list      |                             |
-| influxdb_buckets          | yes      | `[]`                             | list      |                             |
+| Variable                  | Required | Default                          | Choices   | Comments                     |
+|---------------------------|----------|----------------------------------|-----------|------------------------------|
+| influxdb_dependencies     | yes      | `[gnupg]`                        | list      |                              |
+| influxdb_version          | yes      | `2.0.3`                          | string    |                              |
+| influxdb_config_path      | yes      | `/etc/influxdb/config.yml`       | string    |                              |
+| influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt` | string    |                              |
+| influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`       | string    |                              |
+| influxdb_config           | yes      | `{}`                             | dict      |                              |
+| influxdb_default_org      | yes      | `example-org`                    | string    |                              |
+| influxdb_default_bucket   | yes      | `example-bucket`                 | string    |                              |
+| influxdb_default_username | yes      | `example-user`                   | string    |                              |
+| influxdb_default_password | yes      | `ExAmPl3PA55W0rD`                | string    |                              |
+| influxdb_orgs             | yes      | `[]`                             | list      |                              |
+| influxdb_users            | yes      | `[]`                             | list      |                              |
+| influxdb_buckets          | yes      | `[]`                             | list      |                              |
+| influxdb_service_enabled  | yes      | `true`                           | bool      | Start InfluxDB at boot.      |
+| influxdb_service_state    | yes      | `started`                        | bool      | Use `started` or `stopped`.  |
 
 Dependencies
 ------------

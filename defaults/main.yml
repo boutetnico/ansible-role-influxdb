@@ -38,3 +38,7 @@ influxdb_buckets: []
 #  - name: bucket02
 #    description: Second bucket
 #    org: main-org
+
+influxdb_service_enabled: true
+
+influxdb_service_state: started
