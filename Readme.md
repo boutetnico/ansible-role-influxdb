@@ -30,15 +30,15 @@ Role Variables
 | influxdb_config_path      | yes      | `/etc/influxdb/config.yml`       | string    |                              |
 | influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt` | string    |                              |
 | influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`       | string    |                              |
-| influxdb_config           | yes      | `{}`                             | dict      |                              |
-| influxdb_default_org      | yes      | `example-org`                    | string    |                              |
-| influxdb_default_bucket   | yes      | `example-bucket`                 | string    |                              |
-| influxdb_default_username | yes      | `example-user`                   | string    |                              |
-| influxdb_default_password | yes      | `ExAmPl3PA55W0rD`                | string    |                              |
-| influxdb_admin_token      | yes      | `EXAMPLE-TOKEN`                  | string    | Root token for admin user.   |
-| influxdb_orgs             | yes      | `[]`                             | list      |                              |
-| influxdb_users            | yes      | `[]`                             | list      |                              |
-| influxdb_buckets          | yes      | `[]`                             | list      |                              |
+| influxdb_config           | yes      | `{}`                             | dict      | Main configuration object.   |
+| influxdb_primary_org      | yes      | `example-org`                    | string    | Primary organization name.   |
+| influxdb_primary_bucket   | yes      | `example-bucket`                 | string    | Primary bucket name.         |
+| influxdb_primary_username | yes      | `example-user`                   | string    | Primary username.            |
+| influxdb_primary_password | yes      | `ExAmPl3PA55W0rD`                | string    | Password for primary user.   |
+| influxdb_admin_token      | yes      | `EXAMPLE-TOKEN`                  | string    | Token for admin user.        |
+| influxdb_orgs             | yes      | `[]`                             | list      | Additional orgs to create.   |
+| influxdb_users            | yes      | `[]`                             | list      | Additional users to create.  |
+| influxdb_buckets          | yes      | `[]`                             | list      | Additional buckets to create.|
 | influxdb_service_enabled  | yes      | `true`                           | bool      | Start InfluxDB at boot.      |
 | influxdb_service_state    | yes      | `started`                        | bool      | Use `started` or `stopped`.  |
 

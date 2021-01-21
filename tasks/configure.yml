@@ -9,10 +9,10 @@
 
 - name: Set InfluxDB default user, organization, and bucket
   command: influx setup \
-    --org {{ influxdb_default_org }} \
-    --bucket {{ influxdb_default_bucket }} \
-    --username {{ influxdb_default_username }} \
-    --password {{ influxdb_default_password }} \
+    --org {{ influxdb_primary_org }} \
+    --bucket {{ influxdb_primary_bucket }} \
+    --username {{ influxdb_primary_username }} \
+    --password {{ influxdb_primary_password }} \
     --token {{ influxdb_admin_token }} \
     --force
   register: _setup
