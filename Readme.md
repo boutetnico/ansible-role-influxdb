@@ -35,6 +35,7 @@ Role Variables
 | influxdb_default_bucket   | yes      | `example-bucket`                 | string    |                              |
 | influxdb_default_username | yes      | `example-user`                   | string    |                              |
 | influxdb_default_password | yes      | `ExAmPl3PA55W0rD`                | string    |                              |
+| influxdb_admin_token      | yes      | `EXAMPLE-TOKEN`                  | string    | Root token for admin user.   |
 | influxdb_orgs             | yes      | `[]`                             | list      |                              |
 | influxdb_users            | yes      | `[]`                             | list      |                              |
 | influxdb_buckets          | yes      | `[]`                             | list      |                              |

@@ -22,7 +22,7 @@ def test_packages_are_installed(host, name):
   ('influxdb', 'influxdb', '/etc/influxdb/config.yml'),
   ('root', 'root', '/etc/default/influxdb2'),
 ])
-def test_logstash_config_file(host, username, groupname, path):
+def test_influxdb_config_file(host, username, groupname, path):
     config = host.file(path)
     assert config.exists
     assert config.is_file
@@ -34,6 +34,20 @@ def test_influxdb_replies_to_ping(host):
     command = 'influx ping'
     ping = host.check_output(command)
     assert ping == 'OK'
+
+
+@pytest.mark.parametrize('url,token,org,active,path', [
+  ('http://localhost:8086', 'EXAMPLE-TOKEN', 'example-org',
+   'true', '/root/.influxdbv2/configs'),
+])
+def test_influxdb_auth_file(host, url, token, org, active, path):
+    config = host.file(path)
+    assert config.exists
+    assert config.is_file
+    assert config.contains(f'url = "{url}"')
+    assert config.contains(f'token = "{token}"')
+    assert config.contains(f'org = "{org}"')
+    assert config.contains(f'active = {active}')
 
 
 @pytest.mark.parametrize('name,description', [

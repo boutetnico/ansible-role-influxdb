@@ -13,6 +13,7 @@
     --bucket {{ influxdb_default_bucket }} \
     --username {{ influxdb_default_username }} \
     --password {{ influxdb_default_password }} \
+    --token {{ influxdb_admin_token }} \
     --force
   register: _setup
   failed_when:

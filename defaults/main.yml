@@ -17,6 +17,9 @@ influxdb_default_bucket: example-bucket
 influxdb_default_username: example-user
 influxdb_default_password: ExAmPl3PA55W0rD
 
+# Set your root token for admin user
+influxdb_admin_token: EXAMPLE-TOKEN
+
 influxdb_orgs: []
 #  - name: main-org
 #    description: Main organization
