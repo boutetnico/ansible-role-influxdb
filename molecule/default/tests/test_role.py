@@ -30,6 +30,26 @@ def test_influxdb_config_file(host, username, groupname, path):
     assert config.group == groupname
 
 
+@pytest.mark.parametrize('username,groupname,path', [
+  ('root', 'root', '/lib/systemd/system/influxdb.service'),
+])
+def test_systemd_config_file_exists(host, username, groupname, path):
+    config = host.file(path)
+    assert config.exists
+    assert config.is_file
+    assert config.user == username
+    assert config.group == groupname
+
+
+@pytest.mark.parametrize('name', [
+  ('influxdb'),
+])
+def test_influxdb_service_is_running_and_enabled(host, name):
+    service = host.service(name)
+    assert service.is_enabled
+    assert service.is_running
+
+
 def test_influxdb_replies_to_ping(host):
     command = 'influx ping'
     ping = host.check_output(command)
