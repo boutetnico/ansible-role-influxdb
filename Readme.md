@@ -27,7 +27,7 @@ Role Variables
 |---------------------------|----------|----------------------------------|-----------|------------------------------|
 | influxdb_dependencies     | yes      | `[gnupg]`                        | list      |                              |
 | influxdb_version          | yes      | `2.0.3`                          | string    |                              |
-| influxdb_config_path      | yes      | `/etc/influxdb/config.yml`       | string    |                              |
+| influxdb_config_path      | yes      | `/etc/influxdb`                  | string    |                              |
 | influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt` | string    |                              |
 | influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`       | string    |                              |
 | influxdb_config           | yes      | `{}`                             | dict      | Main configuration object.   |
