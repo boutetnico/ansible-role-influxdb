@@ -32,20 +32,20 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "{{ influxdb_config_path | dirname }}"
+    - "{{ influxdb_config_path }}"
     - "{{ influxdb_bolt_path | dirname }}"
     - "{{ influxdb_engine_path }}"
 
 - name: Setup InfluxDB configuration file
   template:
-    dest: "{{ influxdb_config_path }}"
+    dest: "{{ influxdb_config_path }}/config.yml"
     group: influxdb
     mode: 0644
     owner: influxdb
     src: etc/influxdb/config.yml.j2
   notify: Restart InfluxDB
 
-- name: Ensure InfluxDB is started and starts at boot
+- name: Ensure InfluxDB service is in the desired state
   service:
     enabled: "{{ influxdb_service_enabled }}"
     name: "{{ influxdb_service_name }}"
