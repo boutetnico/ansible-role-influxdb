@@ -36,6 +36,15 @@
     - "{{ influxdb_bolt_path | dirname }}"
     - "{{ influxdb_engine_path }}"
 
+- name: Remove any previous InfluxDB configuration file
+  file:
+    path: "{{ influxdb_config_path }}/{{ item }}"
+    state: absent
+  loop:
+    - config.json
+    - config.toml
+  notify: Restart InfluxDB
+
 - name: Setup InfluxDB configuration file
   template:
     dest: "{{ influxdb_config_path }}/config.yml"
