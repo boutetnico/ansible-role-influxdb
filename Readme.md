@@ -26,7 +26,7 @@ Role Variables
 | Variable                  | Required | Default                          | Choices   | Comments                     |
 |---------------------------|----------|----------------------------------|-----------|------------------------------|
 | influxdb_dependencies     | yes      | `[gnupg]`                        | list      |                              |
-| influxdb_version          | yes      | `2.0.4`                          | string    |                              |
+| influxdb_version          | yes      | `2.0.5`                          | string    |                              |
 | influxdb_config_path      | yes      | `/etc/influxdb`                  | string    |                              |
 | influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt` | string    |                              |
 | influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`       | string    |                              |
