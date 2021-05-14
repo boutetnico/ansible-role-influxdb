@@ -12,7 +12,7 @@
 
 - name: Install InfluxDB
   apt:
-    deb: "https://dl.influxdata.com/influxdb/releases/influxdb2-{{ influxdb_version }}-amd64.deb"
+    deb: "https://dl.influxdata.com/influxdb/releases/influxdb2-{{ influxdb_version }}-{{ influxdb_arch }}.deb"
     state: present
 
 - name: Setup InfluxDB default file
