@@ -13,10 +13,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        ansible: ["2.9", "2.10"]
-
     steps:
       - uses: actions/checkout@v2
 
@@ -29,7 +25,7 @@ jobs:
         run: sudo apt-get remove --purge -y ansible
 
       - name: Install dependencies
-        run: pip install ansible~=${{ matrix.ansible }}.0 ansible-lint docker flake8 molecule molecule-docker pytest-testinfra
+        run: pip install ansible ansible-lint docker flake8 molecule molecule-docker pytest-testinfra
 
       - name: Display versions
         run: |
