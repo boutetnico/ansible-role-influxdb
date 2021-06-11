@@ -25,7 +25,7 @@ Role Variables
 
 | Variable                  | Required | Default                          | Choices   | Comments                     |
 |---------------------------|----------|----------------------------------|-----------|------------------------------|
-| influxdb_dependencies     | yes      | `[gnupg]`                        | list      |                              |
+| influxdb_dependencies     | yes      | `[apt-transport-https,gnupg]`    | list      |                              |
 | influxdb_package_state    | yes      | `present`                        | string    | Use `latest` to upgrade.     |
 | influxdb_config_path      | yes      | `/etc/influxdb`                  | string    |                              |
 | influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt` | string    |                              |
