@@ -10,10 +10,17 @@
     state: present
     url: "{{ influxdb_signing_key }}"
 
-- name: Install InfluxDB
-  apt:
-    deb: "https://dl.influxdata.com/influxdb/releases/influxdb2-{{ influxdb_version }}-{{ influxdb_arch }}.deb"
+- name: Manage InfluxData APT repositories
+  apt_repository:
+    repo: "{{ item }}"
     state: present
+  loop: "{{ influxdb_repositories }}"
+
+- name: Ensure InfluxDB package is installed
+  apt:
+    name: influxdb2
+    state: "{{ influxdb_package_state }}"
+    update_cache: true
 
 - name: Setup InfluxDB default file
   template:
