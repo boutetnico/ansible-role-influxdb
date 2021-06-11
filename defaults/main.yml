@@ -1,10 +1,9 @@
 ---
 influxdb_dependencies:
+  - apt-transport-https
   - gnupg
 
-influxdb_version: 2.0.6
-
-influxdb_arch: "{{ influxdb_arch_map[ansible_architecture] }}"
+influxdb_package_state: present
 
 influxdb_config_path: /etc/influxdb
 influxdb_bolt_path: /var/lib/influxdb/influxd.bolt
