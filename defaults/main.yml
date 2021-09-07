@@ -1,6 +1,7 @@
 ---
 influxdb_dependencies:
   - apt-transport-https
+  - curl
   - gnupg
 
 influxdb_package_state: present

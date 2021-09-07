@@ -23,24 +23,24 @@ Supported Platforms
 Role Variables
 --------------
 
-| Variable                  | Required | Default                          | Choices   | Comments                     |
-|---------------------------|----------|----------------------------------|-----------|------------------------------|
-| influxdb_dependencies     | yes      | `[apt-transport-https,gnupg]`    | list      |                              |
-| influxdb_package_state    | yes      | `present`                        | string    | Use `latest` to upgrade.     |
-| influxdb_config_path      | yes      | `/etc/influxdb`                  | string    |                              |
-| influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt` | string    |                              |
-| influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`       | string    |                              |
-| influxdb_config           | yes      | `{}`                             | dict      | Main configuration object.   |
-| influxdb_primary_org      | yes      | `example-org`                    | string    | Primary organization name.   |
-| influxdb_primary_bucket   | yes      | `example-bucket`                 | string    | Primary bucket name.         |
-| influxdb_primary_username | yes      | `example-user`                   | string    | Primary username.            |
-| influxdb_primary_password | yes      | `ExAmPl3PA55W0rD`                | string    | Password for primary user.   |
-| influxdb_admin_token      | yes      | `EXAMPLE-TOKEN`                  | string    | Token for admin user.        |
-| influxdb_orgs             | yes      | `[]`                             | list      | Additional orgs to create.   |
-| influxdb_users            | yes      | `[]`                             | list      | Additional users to create.  |
-| influxdb_buckets          | yes      | `[]`                             | list      | Additional buckets to create.|
-| influxdb_service_enabled  | yes      | `true`                           | bool      | Start InfluxDB at boot.      |
-| influxdb_service_state    | yes      | `started`                        | bool      | Use `started` or `stopped`.  |
+| Variable                  | Required | Default                            | Choices   | Comments                     |
+|---------------------------|----------|------------------------------------|-----------|------------------------------|
+| influxdb_dependencies     | yes      | `[apt-transport-https,curl,gnupg]` | list      |                              |
+| influxdb_package_state    | yes      | `present`                          | string    | Use `latest` to upgrade.     |
+| influxdb_config_path      | yes      | `/etc/influxdb`                    | string    |                              |
+| influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt`   | string    |                              |
+| influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`         | string    |                              |
+| influxdb_config           | yes      | `{}`                               | dict      | Main configuration object.   |
+| influxdb_primary_org      | yes      | `example-org`                      | string    | Primary organization name.   |
+| influxdb_primary_bucket   | yes      | `example-bucket`                   | string    | Primary bucket name.         |
+| influxdb_primary_username | yes      | `example-user`                     | string    | Primary username.            |
+| influxdb_primary_password | yes      | `ExAmPl3PA55W0rD`                  | string    | Password for primary user.   |
+| influxdb_admin_token      | yes      | `EXAMPLE-TOKEN`                    | string    | Token for admin user.        |
+| influxdb_orgs             | yes      | `[]`                               | list      | Additional orgs to create.   |
+| influxdb_users            | yes      | `[]`                               | list      | Additional users to create.  |
+| influxdb_buckets          | yes      | `[]`                               | list      | Additional buckets to create.|
+| influxdb_service_enabled  | yes      | `true`                             | bool      | Start InfluxDB at boot.      |
+| influxdb_service_state    | yes      | `started`                          | bool      | Use `started` or `stopped`.  |
 
 Dependencies
 ------------
