@@ -50,3 +50,5 @@ provisioner:
 
 verifier:
   name: testinfra
+  env:
+    INFLUX_HOST: http://localhost:8086
