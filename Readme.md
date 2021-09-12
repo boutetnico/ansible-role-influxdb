@@ -78,7 +78,7 @@ Example Playbook
 Testing
 -------
 
-    molecule test
+    molecule test --all
 
 License
 -------
