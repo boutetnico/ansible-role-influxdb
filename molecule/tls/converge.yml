@@ -4,6 +4,8 @@
   roles:
     - role: ansible-role-influxdb
 
+      influxdb_host: https://localhost:8086
+
       influxdb_config:
         tls-cert: /etc/ssl/influxdb-selfsigned.crt
         tls-key: /etc/ssl/influxdb-selfsigned.key

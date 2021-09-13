@@ -10,6 +10,8 @@ influxdb_config_path: /etc/influxdb
 influxdb_bolt_path: /var/lib/influxdb/influxd.bolt
 influxdb_engine_path: /var/lib/influxdb/engine
 
+influxdb_host: http://localhost:8086
+
 influxdb_config: {}
 #  http-bind-address: 0.0.0.0:8086
 #  reporting-disabled: true

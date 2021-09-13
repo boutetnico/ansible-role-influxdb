@@ -1,11 +1,7 @@
 ---
-- name: Determine if TLS is used
-  set_fact:
-    _influxdb_protocol: "{{ 'https' if 'tls-cert' in influxdb_config and 'tls-key' in influxdb_config else 'http' }}"
-
 - name: Ensure InfluxDB is up and running
   command: influx ping \
-    --host "{{ _influxdb_protocol }}://localhost:8086"
+    --host "{{ influxdb_host }}"
   retries: 10
   delay: 5
   register: _ping
@@ -14,7 +10,7 @@
 
 - name: Set InfluxDB default user, organization, and bucket
   command: influx setup \
-    --host "{{ _influxdb_protocol }}://localhost:8086" \
+    --host "{{ influxdb_host }}" \
     --org {{ influxdb_primary_org }} \
     --bucket {{ influxdb_primary_bucket }} \
     --username {{ influxdb_primary_username }} \
@@ -29,7 +25,7 @@
 
 - name: Ensure organizations exist
   command: influx org create \
-    --host "{{ _influxdb_protocol }}://localhost:8086" \
+    --host "{{ influxdb_host }}" \
     --name "{{ item.name }}" \
     --description "{{ item.description | d('') }}"
   loop: "{{ influxdb_orgs }}"
@@ -43,7 +39,7 @@
 
 - name: Ensure users exist
   command: influx user create \
-    --host "{{ _influxdb_protocol }}://localhost:8086" \
+    --host "{{ influxdb_host }}" \
     --name "{{ item.name }}" \
     --org "{{ item.org }}" \
     --password "{{ item.password }}"
@@ -58,7 +54,7 @@
 
 - name: Ensure buckets exist
   command: influx bucket create \
-    --host "{{ _influxdb_protocol }}://localhost:8086" \
+    --host "{{ influxdb_host }}" \
     --name "{{ item.name }}" \
     --description "{{ item.description | d('') }}" \
     --org "{{ item.org }}" \
