@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: influxdb
+  namespace: boutetnico
   author: Nicolas Boutet
   description: Install and configure InfluxDB.
   license: MIT
