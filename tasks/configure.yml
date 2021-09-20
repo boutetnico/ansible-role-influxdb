@@ -1,6 +1,7 @@
 ---
 - name: Ensure InfluxDB is up and running
-  command: influx ping
+  command: influx ping \
+    --host "{{ influxdb_host }}"
   retries: 10
   delay: 5
   register: _ping
@@ -9,6 +10,7 @@
 
 - name: Set InfluxDB default user, organization, and bucket
   command: influx setup \
+    --host "{{ influxdb_host }}" \
     --org {{ influxdb_primary_org }} \
     --bucket {{ influxdb_primary_bucket }} \
     --username {{ influxdb_primary_username }} \
@@ -23,6 +25,7 @@
 
 - name: Ensure organizations exist
   command: influx org create \
+    --host "{{ influxdb_host }}" \
     --name "{{ item.name }}" \
     --description "{{ item.description | d('') }}"
   loop: "{{ influxdb_orgs }}"
@@ -36,6 +39,7 @@
 
 - name: Ensure users exist
   command: influx user create \
+    --host "{{ influxdb_host }}" \
     --name "{{ item.name }}" \
     --org "{{ item.org }}" \
     --password "{{ item.password }}"
@@ -50,6 +54,7 @@
 
 - name: Ensure buckets exist
   command: influx bucket create \
+    --host "{{ influxdb_host }}" \
     --name "{{ item.name }}" \
     --description "{{ item.description | d('') }}" \
     --org "{{ item.org }}" \

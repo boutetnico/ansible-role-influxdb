@@ -31,7 +31,7 @@
     src: etc/default/influxdb2.j2
   notify: Restart InfluxDB
 
-- name: Ensure InfluxDB directories exists
+- name: Ensure InfluxDB directories exist
   file:
     group: influxdb
     mode: 0750

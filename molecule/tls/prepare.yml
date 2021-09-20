@@ -1,0 +1,25 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Install TLS certificate
+      copy:
+        dest: "{{ item }}"
+        group: root
+        mode: 0644
+        owner: root
+        src: influxdb-selfsigned.crt
+      loop:
+        - /etc/ssl/influxdb-selfsigned.crt
+        - /usr/local/share/ca-certificates/
+
+    - name: Update trusted certificates
+      command: update-ca-certificates
+
+    - name: Install TLS key
+      copy:
+        dest: /etc/ssl/influxdb-selfsigned.key
+        group: root
+        mode: 0644
+        owner: root
+        src: influxdb-selfsigned.key

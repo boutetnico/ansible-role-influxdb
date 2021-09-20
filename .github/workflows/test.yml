@@ -35,4 +35,4 @@ jobs:
           molecule --version
 
       - name: Run Molecule
-        run: molecule test
+        run: molecule test --all

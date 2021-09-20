@@ -57,7 +57,7 @@ def test_influxdb_replies_to_ping(host):
 
 
 @pytest.mark.parametrize('url,token,org,active,path', [
-  ('http://localhost:8086', 'EXAMPLE-TOKEN', 'example-org',
+  (os.environ['INFLUX_HOST'], 'EXAMPLE-TOKEN', 'example-org',
    'true', '/root/.influxdbv2/configs'),
 ])
 def test_influxdb_auth_file(host, url, token, org, active, path):

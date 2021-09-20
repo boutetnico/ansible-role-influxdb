@@ -27,6 +27,7 @@ Role Variables
 |---------------------------|----------|------------------------------------|-----------|------------------------------|
 | influxdb_dependencies     | yes      | `[apt-transport-https,curl,gnupg]` | list      |                              |
 | influxdb_package_state    | yes      | `present`                          | string    | Use `latest` to upgrade.     |
+| influxdb_host             | yes      | `http://localhost:8086`            | string    |                              |
 | influxdb_config_path      | yes      | `/etc/influxdb`                    | string    |                              |
 | influxdb_bolt_path        | yes      | `/var/lib/influxdb/influxd.bolt`   | string    |                              |
 | influxdb_engine_path      | yes      | `/var/lib/influxdb/engine`         | string    |                              |
@@ -78,7 +79,7 @@ Example Playbook
 Testing
 -------
 
-    molecule test
+    molecule test --all
 
 License
 -------
