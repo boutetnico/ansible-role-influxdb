@@ -115,7 +115,10 @@ def test_influxdb_buckets_exist(host, name, description, org):
     json_data = host.check_output(command)
     items_list = json.loads(json_data)
     for item in items_list:
-        if item['name'] == name and item['description'] == description:
+        if item['name'] == name:
+            if 'description' in item:
+                assert item['description'] == description
+                break
             assert True
             break
     else:
