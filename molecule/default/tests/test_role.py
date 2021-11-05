@@ -12,6 +12,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 @pytest.mark.parametrize('name', [
   ('influxdb2'),
+  ('influxdb2-cli'),
 ])
 def test_packages_are_installed(host, name):
     package = host.package(name)

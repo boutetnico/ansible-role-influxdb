@@ -16,11 +16,12 @@
     state: present
   loop: "{{ influxdb_repositories }}"
 
-- name: Ensure InfluxDB package is installed
+- name: Ensure InfluxDB packages are installed
   apt:
-    name: influxdb2
+    name: "{{ item }}"
     state: "{{ influxdb_package_state }}"
     update_cache: true
+  loop: "{{ influxdb_packages }}"
 
 - name: Setup InfluxDB default file
   template:
