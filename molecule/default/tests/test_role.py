@@ -12,6 +12,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 @pytest.mark.parametrize('name', [
   ('influxdb2'),
+  ('influxdb2-cli'),
 ])
 def test_packages_are_installed(host, name):
     package = host.package(name)
@@ -114,7 +115,10 @@ def test_influxdb_buckets_exist(host, name, description, org):
     json_data = host.check_output(command)
     items_list = json.loads(json_data)
     for item in items_list:
-        if item['name'] == name and item['description'] == description:
+        if item['name'] == name:
+            if 'description' in item:
+                assert item['description'] == description
+                break
             assert True
             break
     else:

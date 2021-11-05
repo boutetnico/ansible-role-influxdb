@@ -4,6 +4,10 @@ influxdb_dependencies:
   - curl
   - gnupg
 
+influxdb_packages:
+  - influxdb2
+  - influxdb2-cli
+
 influxdb_package_state: present
 
 influxdb_config_path: /etc/influxdb

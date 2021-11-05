@@ -20,7 +20,7 @@
   register: _setup
   failed_when:
     - _setup.rc != 0
-    - '"has already been setup" not in _setup.stdout'
+    - '"has already been set up" not in _setup.stderr'
   changed_when: _setup.rc == 0
 
 - name: Ensure organizations exist
@@ -34,7 +34,7 @@
   register: _org
   failed_when:
     - _org.rc != 0
-    - '"already exists" not in _org.stdout'
+    - '"already exists" not in _org.stderr'
   changed_when: _org.rc == 0
 
 - name: Ensure users exist
@@ -49,7 +49,7 @@
   register: _user
   failed_when:
     - _user.rc != 0
-    - '"already exists" not in _user.stdout'
+    - '"already exists" not in _user.stderr'
   changed_when: _user.rc == 0
 
 - name: Ensure buckets exist
@@ -65,5 +65,5 @@
   register: _bucket
   failed_when:
     - _bucket.rc != 0
-    - '"already exists" not in _bucket.stdout'
+    - '"already exists" not in _bucket.stderr'
   changed_when: _bucket.rc == 0
