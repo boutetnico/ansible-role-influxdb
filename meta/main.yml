@@ -13,8 +13,8 @@ galaxy_info:
         - focal
     - name: Debian
       versions:
+        - bullseye
         - buster
-        - stretch
   galaxy_tags:
     - influx
     - influxdata

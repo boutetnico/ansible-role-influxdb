@@ -7,16 +7,16 @@ driver:
   name: docker
 
 platforms:
-  - name: ansible-role-influxdb-debian-9
-    image: debian:9
+  - name: ansible-role-influxdb-debian-10
+    image: debian:10
     command: /lib/systemd/systemd
     tmpfs:
       - /run
       - /run/lock
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: ansible-role-influxdb-debian-10
-    image: debian:10
+  - name: ansible-role-influxdb-debian-11
+    image: debian:11
     command: /lib/systemd/systemd
     tmpfs:
       - /run
