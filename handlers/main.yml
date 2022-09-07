@@ -1,6 +1,6 @@
 ---
 - name: Restart InfluxDB
-  service:
+  ansible.builtin.service:
     name: "{{ influxdb_service_name }}"
     state: restarted
   when: influxdb_service_state == "started"

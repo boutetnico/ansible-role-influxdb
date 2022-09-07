@@ -10,15 +10,15 @@ This role installs and configures [InfluxDB](https://docs.influxdata.com/influxd
 Requirements
 ------------
 
-Ansible 2.7 or newer.
+Ansible 2.10 or newer.
 
 Supported Platforms
 -------------------
 
 - [Debian - 10 (Buster)](https://wiki.debian.org/DebianBuster)
 - [Debian - 11 (Bullseye)](https://wiki.debian.org/DebianBullseye)
-- [Ubuntu - 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/)
 - [Ubuntu - 20.04 (Focal Fossa)](http://releases.ubuntu.com/20.04/)
+- [Ubuntu - 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/)
 
 Role Variables
 --------------

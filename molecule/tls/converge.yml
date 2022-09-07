@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   roles:
-    - role: ansible-role-influxdb
+    - role: boutetnico.influxdb
 
       influxdb_host: https://localhost:8086
 
