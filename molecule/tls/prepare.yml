@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: Install TLS certificate
-      copy:
+      ansible.builtin.copy:
         dest: "{{ item }}"
         group: root
         mode: 0644
@@ -14,10 +14,11 @@
         - /usr/local/share/ca-certificates/
 
     - name: Update trusted certificates
-      command: update-ca-certificates
+      ansible.builtin.command: update-ca-certificates
+      changed_when: false
 
     - name: Install TLS key
-      copy:
+      ansible.builtin.copy:
         dest: /etc/ssl/influxdb-selfsigned.key
         group: root
         mode: 0644
