@@ -14,7 +14,8 @@ platforms:
       - /run
       - /run/lock
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
   - name: ansible-role-influxdb-debian-11
     image: debian:11
     command: /lib/systemd/systemd
@@ -22,7 +23,8 @@ platforms:
       - /run
       - /run/lock
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
   - name: ansible-role-influxdb-ubuntu-2004
     image: ubuntu:20.04
     command: /lib/systemd/systemd
@@ -30,7 +32,8 @@ platforms:
       - /run
       - /run/lock
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
   - name: ansible-role-influxdb-ubuntu-2204
     image: ubuntu:22.04
     command: /lib/systemd/systemd
@@ -38,7 +41,8 @@ platforms:
       - /run
       - /run/lock
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
 
 lint: |
     yamllint .
