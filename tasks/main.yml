@@ -1,5 +1,7 @@
 ---
-- include_tasks: setup.yml
+- name: Include setup tasks
+  ansible.builtin.include_tasks: setup.yml
 
-- include_tasks: configure.yml
+- name: Include configuration tasks
+  ansible.builtin.include_tasks: configure.yml
   when: influxdb_service_state == "started"
