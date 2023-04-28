@@ -1,7 +1,7 @@
 ---
 dependency:
   name: galaxy
-  enabled: False
+  enabled: false
 
 driver:
   name: docker
@@ -43,11 +43,6 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     cgroupns_mode: host
-
-lint: |
-    yamllint .
-    ansible-lint
-    flake8
 
 provisioner:
   name: ansible

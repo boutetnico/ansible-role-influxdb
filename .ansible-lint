@@ -1,0 +1,6 @@
+---
+# .ansible-lint
+
+exclude_paths:
+  - .github
+  - .pre-commit-config.yaml
