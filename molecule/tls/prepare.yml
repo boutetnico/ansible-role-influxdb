@@ -6,7 +6,7 @@
       ansible.builtin.copy:
         dest: "{{ item }}"
         group: root
-        mode: 0644
+        mode: "0644"
         owner: root
         src: influxdb-selfsigned.crt
       loop:
@@ -21,6 +21,6 @@
       ansible.builtin.copy:
         dest: /etc/ssl/influxdb-selfsigned.key
         group: root
-        mode: 0644
+        mode: "0644"
         owner: root
         src: influxdb-selfsigned.key
