@@ -13,8 +13,8 @@ galaxy_info:
         - jammy
     - name: Debian
       versions:
+        - bookworm
         - bullseye
-        - buster
   galaxy_tags:
     - influx
     - influxdata

@@ -1,7 +1,7 @@
 ---
-influxdb_signing_key: https://repos.influxdata.com/influxdata-archive_compat.key
+influxdb_signing_key: https://repos.influxdata.com/influxdata-archive.key
 
 influxdb_repositories:
-  - "deb https://repos.influxdata.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+  - "deb https://repos.influxdata.com/debian stable main"
 
 influxdb_service_name: influxdb
