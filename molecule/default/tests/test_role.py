@@ -4,12 +4,6 @@ import os
 
 import json
 
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ["MOLECULE_INVENTORY_FILE"]
-).get_hosts("all")
-
 
 @pytest.mark.parametrize(
     "name",
@@ -74,7 +68,7 @@ def test_influxdb_replies_to_ping(host):
     "url,token,org,active,path",
     [
         (
-            os.environ["INFLUX_HOST"],
+            os.environ.get("INFLUX_HOST"),
             "EXAMPLE-TOKEN",
             "example-org",
             "true",
